@@ -2,7 +2,16 @@
 
 **An issue tracker you share with your agents.**
 
+![Logbook: you and your agents share one issue tracker and one log. Agents connect over Linear-compatible MCP. It runs on Cloudflare's free tier or self-hosted with Bun and SQLite or Docker.](docs/hero.png)
+
 Your agents file issues, update them, link their pull requests, and ask you when something needs a human. They use the same MCP tools as Linear, so an agent that already works with Linear switches over by changing a URL and a token. Every write by anyone lands in one log. It runs on Cloudflare's free tier or as one Bun process with a SQLite file.
+
+## What it looks like
+
+| The board | An issue | An agent asks you |
+| --- | --- | --- |
+| ![The issues of three apps, grouped by status](docs/screenshot-board.png) | ![An issue with the agent's comment, its pull request and the history of every change](docs/screenshot-issue.png) | ![A question an agent asked over MCP with ask_decision, waiting in the inbox with its options and recommendation](docs/screenshot-decision.png) |
+| Every open issue across your apps, grouped by status. | The agent's comment, its pull request and every change in one place. | A question an agent sent with `ask_decision`, waiting in your inbox. |
 
 ![An agent's question in the inbox, answered in one click, and the log of who did what](docs/demo.gif)
 
@@ -60,6 +69,18 @@ Ask it to list the open issues, or to ask you something with `ask_decision`. The
 Open your hostname, log in through Access, and add your apps in Settings. Each app gets a key that prefixes its issues, like `ENG-12`.
 
 To host it yourself instead, run `bun run serve` on a machine of your own. It keeps everything under `LOGBOOK_DATA` (default `./data`) and listens on 127.0.0.1:8796. Put it behind a Cloudflare Tunnel with the same Access setup and pass the same variables as environment variables.
+
+## Run it with Docker
+
+```sh
+git clone https://github.com/falkoro/logbook.git
+cd logbook
+docker compose up -d
+```
+
+Open http://localhost:8796. Everything lives in the `logbook-data` volume, so it survives restarts and rebuilds; set `LOGBOOK_PORT` to use another port. Like the demo, it signs in every request as `dev@localhost`, so the port is published on 127.0.0.1 only. In Settings, create a token and add `http://localhost:8796/mcp` to your agent as shown under [Connect an agent](#connect-an-agent). `docker compose down` stops it and keeps the data; `docker compose down -v` deletes it too.
+
+To reach it from anywhere but this machine, set `LOGBOOK_DEV_AUTH=0`, add the Access variables from above to the service's `environment`, and put it behind a Cloudflare Tunnel.
 
 ## Connect an agent
 

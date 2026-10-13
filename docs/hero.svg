@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="800" viewBox="0 0 1600 800" font-family="'Noto Sans', 'Liberation Sans', sans-serif">
+  <title>Logbook: one issue tracker and one log, shared by you and your agents over Linear-compatible MCP, on Cloudflare's free tier or self-hosted</title>
+  <defs>
+    <pattern id="rules" width="1600" height="40" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="39.5" x2="1600" y2="39.5" stroke="#E7E1D1" stroke-width="1.5"/>
+    </pattern>
+    <marker id="head" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#10292E"/>
+    </marker>
+    <marker id="head-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#C98A12"/>
+    </marker>
+  </defs>
+
+  <!-- A page of a ship's log: paper, ruled lines, a margin. -->
+  <rect width="1600" height="800" fill="#F4F1E8"/>
+  <rect y="160" width="1600" height="640" fill="url(#rules)"/>
+  <line x1="40.5" y1="0" x2="40.5" y2="800" stroke="#E6B3A6" stroke-width="2"/>
+
+  <!-- Wordmark and tagline -->
+  <rect x="70" y="44" width="60" height="60" rx="14" fill="#8FDCC9"/>
+  <rect x="84" y="56" width="6" height="36" rx="3" fill="#10292E"/>
+  <rect x="96" y="62" width="22" height="5" rx="2.5" fill="#10292E"/>
+  <rect x="96" y="72" width="22" height="5" rx="2.5" fill="#10292E"/>
+  <rect x="96" y="82" width="15" height="5" rx="2.5" fill="#10292E"/>
+  <text x="150" y="88" font-size="46" font-weight="700" fill="#10292E">Logbook</text>
+  <text x="150" y="128" font-size="25" fill="#3D5257">An issue tracker you share with your agents.</text>
+  <text x="1530" y="88" font-size="24" font-weight="700" fill="#10292E" text-anchor="end">Linear-compatible MCP</text>
+  <text x="1530" y="124" font-size="20" fill="#5B6B6E" text-anchor="end" font-family="'JetBrains Mono', 'Liberation Mono', monospace">list_issues · save_issue · save_comment · ask_decision</text>
+
+  <!-- You -->
+  <rect x="70" y="250" width="300" height="290" rx="18" fill="#FFFFFF" stroke="#DCD6C6" stroke-width="2"/>
+  <circle cx="122" cy="306" r="30" fill="#10292E"/>
+  <circle cx="122" cy="298" r="9" fill="#8FDCC9"/>
+  <path d="M106 323 a16 14 0 0 1 32 0 z" fill="#8FDCC9"/>
+  <text x="168" y="300" font-size="30" font-weight="700" fill="#10292E">You</text>
+  <text x="168" y="328" font-size="20" fill="#5B6B6E">the captain</text>
+  <g font-size="22" fill="#10292E">
+    <circle cx="100" cy="389" r="5" fill="#8FDCC9"/><text x="116" y="397">Watch the board</text>
+    <circle cx="100" cy="433" r="5" fill="#F0B23F"/><text x="116" y="441">Answer their questions</text>
+    <circle cx="100" cy="477" r="5" fill="#8FDCC9"/><text x="116" y="485">Ship releases, which</text>
+    <text x="116" y="515">close their issues</text>
+  </g>
+
+  <!-- You ⇄ tracker -->
+  <line x1="378" y1="395" x2="462" y2="395" stroke="#10292E" stroke-width="3" marker-start="url(#head)" marker-end="url(#head)"/>
+  <rect x="381" y="350" width="78" height="30" rx="15" fill="#10292E"/>
+  <text x="420" y="371" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">web UI</text>
+
+  <!-- The tracker -->
+  <rect x="470" y="170" width="660" height="470" rx="24" fill="#10292E"/>
+  <text x="500" y="212" font-size="19" font-weight="700" fill="#8FDCC9" letter-spacing="2">ONE TRACKER, ONE LOG</text>
+  <text x="500" y="250" font-size="28" font-weight="700" fill="#FFFFFF">Everyone works on the same issues</text>
+
+  <g font-size="22">
+    <rect x="500" y="274" width="600" height="52" rx="10" fill="#1D4148"/>
+    <text x="520" y="307" fill="#8FDCC9" font-size="20" font-family="'JetBrains Mono', 'Liberation Mono', monospace">SHOP-4</text>
+    <text x="616" y="307" fill="#FFFFFF">Discount code applies twice</text>
+    <rect x="964" y="285" width="120" height="30" rx="15" fill="#2C5A61"/>
+    <text x="1024" y="306" font-size="17" fill="#FFFFFF" text-anchor="middle">In Review</text>
+
+    <rect x="500" y="336" width="600" height="52" rx="10" fill="#1D4148"/>
+    <text x="520" y="369" fill="#8FDCC9" font-size="20" font-family="'JetBrains Mono', 'Liberation Mono', monospace">APP-3</text>
+    <text x="616" y="369" fill="#FFFFFF">Pick a pickup time</text>
+    <rect x="964" y="347" width="120" height="30" rx="15" fill="#2C5A61"/>
+    <text x="1024" y="368" font-size="17" fill="#FFFFFF" text-anchor="middle">In Progress</text>
+  </g>
+
+  <rect x="500" y="400" width="600" height="98" rx="12" fill="#F0B23F"/>
+  <text x="520" y="428" font-size="17" font-weight="700" fill="#10292E" letter-spacing="1.5">DECISION · CLAUDE ASKS YOU</text>
+  <text x="520" y="460" font-size="24" font-weight="700" fill="#10292E">Roastery only, or partner cafés too?</text>
+  <text x="520" y="486" font-size="19" fill="#3A2A05">Recommends: roastery only. Lands in your inbox.</text>
+
+  <text x="500" y="536" font-size="17" font-weight="700" fill="#8FDCC9" letter-spacing="2">THE LOG: EVERY WRITE, BY ANYONE</text>
+  <g font-size="19" font-family="'JetBrains Mono', 'Liberation Mono', monospace">
+    <text x="500" y="566"><tspan x="500" fill="#7FA3A6">09:00</tspan><tspan x="578" fill="#FFFFFF">claude</tspan><tspan x="680" fill="#8FDCC9">ask_decision</tspan><tspan x="852" fill="#FFFFFF">SHOP-6</tspan></text>
+    <text x="500" y="594"><tspan x="500" fill="#7FA3A6">09:12</tspan><tspan x="578" fill="#FFFFFF">you</tspan><tspan x="680" fill="#F0B23F">answer</tspan><tspan x="852" fill="#FFFFFF">Roastery only</tspan></text>
+    <text x="500" y="622"><tspan x="500" fill="#7FA3A6">09:40</tspan><tspan x="578" fill="#FFFFFF">codex</tspan><tspan x="680" fill="#8FDCC9">link_pr</tspan><tspan x="852" fill="#FFFFFF">APP-3</tspan></text>
+  </g>
+
+  <!-- Agents ⇄ tracker over MCP -->
+  <g stroke="#10292E" stroke-width="3">
+    <line x1="1138" y1="290" x2="1222" y2="290" marker-start="url(#head)" marker-end="url(#head)"/>
+    <line x1="1138" y1="390" x2="1222" y2="390" marker-start="url(#head)" marker-end="url(#head)"/>
+    <line x1="1138" y1="490" x2="1222" y2="490" marker-start="url(#head)" marker-end="url(#head)"/>
+  </g>
+  <rect x="1148" y="325" width="64" height="30" rx="15" fill="#8FDCC9"/>
+  <text x="1180" y="346" font-size="17" font-weight="700" fill="#10292E" text-anchor="middle">MCP</text>
+
+  <rect x="1230" y="250" width="300" height="80" rx="16" fill="#FFFFFF" stroke="#DCD6C6" stroke-width="2"/>
+  <rect x="1250" y="272" width="36" height="36" rx="8" fill="#6B3F2A"/>
+  <text x="1268" y="297" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">C</text>
+  <text x="1302" y="284" font-size="24" font-weight="700" fill="#10292E">claude</text>
+  <text x="1302" y="312" font-size="19" fill="#5B6B6E">agent · its own token</text>
+
+  <rect x="1230" y="350" width="300" height="80" rx="16" fill="#FFFFFF" stroke="#DCD6C6" stroke-width="2"/>
+  <rect x="1250" y="372" width="36" height="36" rx="8" fill="#3D2466"/>
+  <text x="1268" y="397" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">C</text>
+  <text x="1302" y="384" font-size="24" font-weight="700" fill="#10292E">codex</text>
+  <text x="1302" y="412" font-size="19" fill="#5B6B6E">agent · its own token</text>
+
+  <rect x="1230" y="450" width="300" height="80" rx="16" fill="#F4F1E8" stroke="#9AA7A8" stroke-width="2" stroke-dasharray="8 6"/>
+  <rect x="1250" y="472" width="36" height="36" rx="8" fill="none" stroke="#9AA7A8" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="1268" y="497" font-size="22" font-weight="700" fill="#9AA7A8" text-anchor="middle">+</text>
+  <text x="1302" y="484" font-size="24" font-weight="700" fill="#10292E">your next agent</text>
+  <text x="1302" y="512" font-size="19" fill="#5B6B6E">any MCP client or script</text>
+
+  <text x="1230" y="574" font-size="21" fill="#10292E">Same tool names as Linear:</text>
+  <text x="1230" y="602" font-size="21" fill="#10292E">swap the URL and the token.</text>
+
+  <!-- Where it runs -->
+  <text x="70" y="682" font-size="17" font-weight="700" fill="#5B6B6E" letter-spacing="2">RUNS ON</text>
+  <rect x="70" y="696" width="720" height="80" rx="16" fill="#FFFFFF" stroke="#DCD6C6" stroke-width="2"/>
+  <path d="M104 758 h46 a15 15 0 0 0 1 -30 a21 21 0 0 0 -40 -4 a14 14 0 0 0 -7 34 z" fill="#10292E"/>
+  <text x="178" y="728" font-size="25" font-weight="700" fill="#10292E">Cloudflare free tier</text>
+  <text x="178" y="759" font-size="20" fill="#5B6B6E">Workers + D1 + R2, Cloudflare Access for the login</text>
+
+  <rect x="810" y="696" width="720" height="80" rx="16" fill="#FFFFFF" stroke="#DCD6C6" stroke-width="2"/>
+  <rect x="836" y="714" width="52" height="44" rx="7" fill="#10292E"/>
+  <rect x="845" y="724" width="34" height="5" rx="2.5" fill="#8FDCC9"/>
+  <rect x="845" y="734" width="34" height="5" rx="2.5" fill="#8FDCC9"/>
+  <rect x="845" y="744" width="34" height="5" rx="2.5" fill="#8FDCC9"/>
+  <text x="914" y="728" font-size="25" font-weight="700" fill="#10292E">Self-hosted</text>
+  <text x="914" y="759" font-size="20" fill="#5B6B6E">Bun + SQLite, or <tspan fill="#10292E" font-family="'JetBrains Mono', 'Liberation Mono', monospace">docker compose up</tspan></text>
+</svg>
