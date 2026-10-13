@@ -1,0 +1,38 @@
+{
+  "name": "logbook",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "description": "An issue tracker you share with your agents. Runs on Cloudflare (Workers + D1 + R2) or self-hosted (Bun + SQLite).",
+  "bin": { "logbook": "cli/logbook.ts" },
+  "scripts": {
+    "dev": "vite build && wrangler dev --local --port 8796",
+    "dev:ui": "vite",
+    "serve": "vite build && bun entry/server.ts",
+    "demo": "bun entry/demo.ts && DEV_AUTH=1 bun run serve",
+    "build": "vite build",
+    "check": "tsc --noEmit -p tsconfig.json",
+    "test": "bun test",
+    "db:migrate:local": "wrangler d1 migrations apply logbook --local",
+    "db:migrate:remote": "wrangler d1 migrations apply logbook --remote",
+    "deploy": "vite build && wrangler d1 migrations apply logbook --remote && wrangler deploy"
+  },
+  "dependencies": {
+    "hono": "4.13.13",
+    "markdown-it": "15.0.2",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20261011.1",
+    "@types/bun": "1.4.2",
+    "@types/markdown-it": "14.2.0",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.2",
+    "typescript": "5.9.3",
+    "vite": "8.3.4",
+    "wrangler": "4.149.0"
+  }
+}

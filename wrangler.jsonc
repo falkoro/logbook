@@ -1,0 +1,39 @@
+// Logbook on Cloudflare. Reached only through Cloudflare Access on your own hostname, never on workers.dev.
+// Access: one application on the hostname for you, plus a bypass application for /api, /mcp, /hooks, /files,
+// /openapi.json, /healthz, /.well-known, /oauth/register and /oauth/token; the Worker verifies every one of those
+// requests itself (bearer token or Access JWT) and refuses the rest. /oauth/authorize stays behind Access: it is
+// where you approve a connector. The README walks through it.
+// Optional secrets (wrangler secret put): GITHUB_WEBHOOK_SECRET (GitHub PR links), ORIGIN_TOKEN (Cursor Origin PR links).
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "logbook",
+  "main": "entry/worker.ts",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": false,
+  // A hostname on a zone in your Cloudflare account.
+  "routes": [{ "pattern": "logbook.example.com", "custom_domain": true }],
+  "preview_urls": false,
+  // `bunx wrangler d1 create logbook` prints the database_id.
+  "d1_databases": [{ "binding": "DB", "database_name": "logbook", "database_id": "<your-d1-database-id>", "migrations_dir": "migrations" }],
+  // `bunx wrangler r2 bucket create logbook-files`
+  "r2_buckets": [{ "binding": "FILES", "bucket_name": "logbook-files" }],
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*", "/mcp", "/hooks/*", "/files/*", "/healthz", "/openapi.json", "/.well-known/*", "/oauth/*"]
+  },
+  // Cursor Origin has no webhooks: with ORIGIN_TOKEN and ORIGIN_REPOS set, a cron polls each repo's latest PRs.
+  "triggers": { "crons": ["*/5 * * * *"] },
+  "vars": {
+    // Your Zero Trust team domain (Zero Trust > Settings).
+    "ACCESS_TEAM_DOMAIN": "<your-team>.cloudflareaccess.com",
+    // The Application Audience (AUD) tag of your Logbook Access application. Empty = no human can log in (tokens still work).
+    "ACCESS_AUD": "",
+    // Who may log in as the owner, comma-separated. Must match the email Access verified.
+    "OWNER_EMAILS": "you@example.com",
+    // Cursor Origin repos to poll (org/name, comma-separated, or * for every repo pushed in the last day). Empty = off.
+    "ORIGIN_REPOS": ""
+  },
+  "observability": { "enabled": true }
+}
