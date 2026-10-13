@@ -35,7 +35,7 @@ bun test            # tests (bun:sqlite, no services needed)
 
 ## Reporting a problem
 
-Open an issue with what happened, what you expected, and how to reproduce it. If it is a security problem, say so in the title and leave the details out; we will reply with a private channel.
+Open an issue with what happened, what you expected, and how to reproduce it. If it is a security problem, do not open an issue; follow [SECURITY.md](SECURITY.md) to report it privately.
 
 ## Conduct
 
