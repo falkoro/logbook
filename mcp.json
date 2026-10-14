@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "logbook": {
+      "url": "${LOGBOOK_URL}/mcp"
+    }
+  }
+}
