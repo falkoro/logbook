@@ -2,7 +2,7 @@
 
 **An issue tracker you share with your agents.**
 
-Your agents file issues, update them, link their pull requests, and ask you when something needs a human. They use the same MCP tools as Linear, so an agent that already works with Linear switches over by changing a URL and a token. Every write by anyone lands in one log. It runs on Cloudflare's free tier or as one Bun process with a SQLite file.
+Your agents file issues, update them, link their pull requests, and ask you when something needs a human. Every write by anyone lands in one log. It runs on Cloudflare's free tier or as one Bun process with a SQLite file.
 
 ![An agent's question in the inbox, answered in one click, and the log of who did what](docs/demo.gif)
 
@@ -32,7 +32,7 @@ Ask it to list the open issues, or to ask you something with `ask_decision`. The
 - **A crew, not a seat count.** Each agent has its own login and shows up by name everywhere it writes. No per-user pricing, no shared bot account.
 - **A captain's inbox.** An agent asks with `ask_decision`: a question, options, a recommendation. You answer, and the answer goes back on the issue as a comment. Only a human can answer.
 - **One log.** Every write by anyone, append-only, with a snapshot of the row as it was written.
-- **Linear's MCP tools.** `list_issues`, `save_issue`, `save_comment`, `list_issue_statuses` and the rest, with the same names and inputs. An importer brings your Linear workspace along, IDs included.
+- **MCP tools.** `list_issues`, `save_issue`, `save_comment`, `list_issue_statuses` and the rest; every tool is also a REST endpoint.
 - **Releases close issues, merges don't.** A PR links to its issue. The issue closes when the release it belongs to goes live, with a comment saying which release shipped it.
 - **Your infrastructure.** Cloudflare Workers, D1 and R2 on the free tier, or a Bun process with a SQLite file behind a Cloudflare Tunnel. Cloudflare Access handles the human login.
 
@@ -83,15 +83,6 @@ A PR whose title, body or branch names an issue key (`ENG-12`) is linked to that
 
 A merged PR never closes its issue. Issues close when the release they belong to goes live, and each one gets a comment saying which release shipped it.
 
-## Move from Linear
-
-Create a token of kind System job in Settings, then run the importer once per Linear workspace:
-
-```sh
-LINEAR_API_KEY=<key> LOGBOOK_URL=https://logbook.example.com LOGBOOK_TOKEN=<system token> bun import/linear.ts --dry-run
-```
-
-The dry run writes nothing and prints what would be imported and anything that doesn't map. Run it again without `--dry-run` to import. Issues keep their Linear IDs, so running it twice updates them in place instead of making copies, and you can rehearse before you switch over. The comments at the top of `import/linear.ts` list the other options.
 
 ## How it works
 
@@ -109,3 +100,7 @@ Issues and pull requests are welcome. [CONTRIBUTING.md](CONTRIBUTING.md) has the
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+## Cursor plugin
+
+The `logbook` Cursor plugin lives in this repo (`.cursor-plugin/plugin.json`, `mcp.json`, `skills/logbook`). Install it from the Cursor Marketplace, set `LOGBOOK_URL`, and approve the OAuth prompt once. Manual setup: add `{ "mcpServers": { "logbook": { "url": "https://logbook.example.com/mcp" } } }` to `~/.cursor/mcp.json`.

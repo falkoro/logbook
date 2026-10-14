@@ -1,0 +1,35 @@
+{
+  "name": "logbook",
+  "version": "0.1.0",
+  "description": "Logbook: an open-source issue tracker you share with your agents. Agents file and update issues, link pull requests, track releases and ask you when a decision needs a human. Every write lands in one log.",
+  "author": {
+    "name": "the Logbook contributors"
+  },
+  "homepage": "https://github.com/falkoro/logbook",
+  "repository": "https://github.com/falkoro/logbook",
+  "license": "MIT",
+  "keywords": [
+    "issue-tracker",
+    "mcp",
+    "agents",
+    "project-management",
+    "self-hosted",
+    "open-source",
+    "cloudflare"
+  ],
+  "logo": "assets/logo.png",
+  "variables": {
+    "type": "object",
+    "properties": {
+      "LOGBOOK_URL": {
+        "type": "string",
+        "title": "Logbook URL",
+        "description": "Base URL of your Logbook instance, without trailing slash",
+        "default": "https://logbook.spotcloud.nl"
+      }
+    },
+    "required": [
+      "LOGBOOK_URL"
+    ]
+  }
+}
