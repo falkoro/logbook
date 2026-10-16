@@ -23,6 +23,8 @@ async function assets(req: Request) {
 }
 
 const local = new WeakSet<Request>();
+// In Docker a published port arrives from the bridge, never loopback; docker-compose.yml sets this and publishes on 127.0.0.1 only.
+const anyPeer = process.env.LOCAL_ANY_PEER === "1";
 const app = makeApp({ db, blobs, cfg, assets, isLocal: (r) => local.has(r) });
 
 const server = Bun.serve({
@@ -30,7 +32,7 @@ const server = Bun.serve({
   port: Number(process.env.PORT ?? 8796),
   fetch(req, srv) {
     const ip = srv.requestIP(req)?.address;
-    if (ip === "127.0.0.1" || ip === "::1" || ip === "::ffff:127.0.0.1") local.add(req);
+    if (anyPeer || ip === "127.0.0.1" || ip === "::1" || ip === "::ffff:127.0.0.1") local.add(req);
     return app.fetch(req);
   },
 });

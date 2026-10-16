@@ -1,0 +1,18 @@
+# docker compose up -d, then open http://localhost:8796.
+# DEV_AUTH signs in every request that reaches the container, so the port is published on 127.0.0.1 only.
+# To expose it, set LOGBOOK_DEV_AUTH=0 and put Cloudflare Access in front (see the README).
+services:
+  logbook:
+    build: .
+    ports:
+      - "127.0.0.1:${LOGBOOK_PORT:-8796}:8796"
+    volumes:
+      - logbook-data:/data
+    environment:
+      LOGBOOK_DATA: /data
+      DEV_AUTH: ${LOGBOOK_DEV_AUTH:-1}
+      LOCAL_ANY_PEER: "1"
+    restart: unless-stopped
+
+volumes:
+  logbook-data:
