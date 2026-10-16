@@ -2,7 +2,7 @@
 
 ## Supported versions
 
-Fixes go into the latest release and `main`.
+Fixes go into the latest release and `master`.
 
 ## Reporting a vulnerability
 
